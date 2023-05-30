@@ -14,3 +14,11 @@
 .chatOnline {
   flex: 3;
 }
+
+.chatMenuWrapper,
+.chatBoxWrapper,
+.chatOnlineWrapper {
+  padding: 10px;
+  background-color: greenyellow;
+  height: 100%;
+}
