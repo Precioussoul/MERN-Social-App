@@ -1,6 +1,7 @@
 import React from "react"
 import Topbar from "../../components/topbar/Topbar"
 import "./messenger.css"
+import Conversation from "../../components/conversation/Conservation"
 
 const Messenger = () => {
   return (
@@ -10,6 +11,7 @@ const Messenger = () => {
         <div className='chatMenu'>
           <div className='chatMenuWrapper'>
             <input type='text' className='chatMenuInput' placeholder='' />
+            <Conversation />
           </div>
         </div>
         <div className='chatBox'>
