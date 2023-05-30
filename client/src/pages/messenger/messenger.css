@@ -22,3 +22,11 @@
   background-color: greenyellow;
   height: 100%;
 }
+
+.chatMenuInput {
+  width: 90%;
+  padding: 10px 0;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid gray;
+}
