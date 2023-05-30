@@ -5,7 +5,13 @@ const Messenger = () => {
   return (
     <>
       <Topbar />
-      <div>Messenger</div>
+      <div className='messenger'>
+        <div className='chatMenu'>
+          <div className='chatMenuWrapper'></div>
+        </div>
+        <div className='chatBox'></div>
+        <div className='chatOnline'></div>
+      </div>
     </>
   )
 }
