@@ -14,7 +14,7 @@ const Messenger = () => {
             <input
               type='text'
               className='chatMenuInput'
-              placeholder='Search for friends'
+              placeholder='Search for friends...'
             />
             <Conversation />
             <Conversation />
@@ -28,11 +28,38 @@ const Messenger = () => {
               <Message />
               <Message own={true} />
               <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+              <Message own={true} />
+              <Message />
+            </div>
+            <div className='chatBoxBottom'>
+              <textarea
+                placeholder='write something...'
+                className='chatMessageInput'
+              />
+              <button className='chatSubmitButton'>Send</button>
             </div>
           </div>
         </div>
         <div className='chatOnline'>
-          <div className='chatOnlineWrapper'>online</div>
+          <div className='chatOnlineWrapper'></div>
         </div>
       </div>
     </>
