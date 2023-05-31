@@ -3,6 +3,7 @@ import Topbar from "../../components/topbar/Topbar"
 import "./messenger.css"
 import Conversation from "../../components/conversation/Conservation"
 import Message from "../../components/message/Message"
+import ChatOnline from "../../components/chatOnline/ChatOnline"
 
 const Messenger = () => {
   return (
@@ -16,10 +17,33 @@ const Messenger = () => {
               className='chatMenuInput'
               placeholder='Search for friends...'
             />
-            <Conversation />
-            <Conversation />
-            <Conversation />
-            <Conversation />
+            <div className='conversationBox'>
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+              <Conversation />
+            </div>
           </div>
         </div>
         <div className='chatBox'>
@@ -59,7 +83,12 @@ const Messenger = () => {
           </div>
         </div>
         <div className='chatOnline'>
-          <div className='chatOnlineWrapper'></div>
+          <div className='chatOnlineWrapper'>
+            <ChatOnline />
+            <ChatOnline />
+            <ChatOnline />
+            <ChatOnline />
+          </div>
         </div>
       </div>
     </>
