@@ -10,12 +10,21 @@ const Messenger = () => {
       <div className='messenger'>
         <div className='chatMenu'>
           <div className='chatMenuWrapper'>
-            <input type='text' className='chatMenuInput' placeholder='' />
+            <input
+              type='text'
+              className='chatMenuInput'
+              placeholder='Search for friends'
+            />
+            <Conversation />
+            <Conversation />
+            <Conversation />
             <Conversation />
           </div>
         </div>
         <div className='chatBox'>
-          <div className='chatBoxWrapper'></div>
+          <div className='chatBoxWrapper'>
+            <div className='chatBoxTop'></div>
+          </div>
         </div>
         <div className='chatOnline'>
           <div className='chatOnlineWrapper'>online</div>
