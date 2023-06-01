@@ -29,9 +29,15 @@ const Messenger = () => {
 
   useEffect(() => {
     const getMessenger = async () => {
-      const res = await axios.get("/messages/" + currentChat._id)
+      try {
+        const res = await axios.get("/messages/" + currentChat?._id)
+        setMessages(res.data)
+      } catch (error) {
+        console.log(error)
+      }
     }
-  }, [])
+    getMessenger()
+  }, [currentChat])
 
   return (
     <>
