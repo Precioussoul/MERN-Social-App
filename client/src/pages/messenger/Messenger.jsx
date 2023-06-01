@@ -70,29 +70,12 @@ const Messenger = () => {
             {currentChat ? (
               <>
                 <div className='chatBoxTop'>
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
-                  <Message own={true} />
-                  <Message />
+                  {messages.map((message) => (
+                    <Message
+                      message={message}
+                      own={message.sender === user._id}
+                    />
+                  ))}
                 </div>
                 <div className='chatBoxBottom'>
                   <textarea
