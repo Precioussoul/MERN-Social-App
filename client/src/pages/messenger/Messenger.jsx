@@ -39,6 +39,8 @@ const Messenger = () => {
     getMessenger()
   }, [currentChat])
 
+  console.log("messages", messages)
+
   return (
     <>
       <Topbar />
@@ -52,11 +54,13 @@ const Messenger = () => {
             />
             <div className='conversationBox'>
               {conversations.map((conversation, index) => (
-                <Conversation
-                  key={index}
-                  conversation={conversation}
-                  currentUser={user}
-                />
+                <div onClick={() => setCurrentChat(conversation)}>
+                  <Conversation
+                    key={index}
+                    conversation={conversation}
+                    currentUser={user}
+                  />
+                </div>
               ))}
             </div>
           </div>
