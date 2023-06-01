@@ -27,6 +27,12 @@ const Messenger = () => {
     getConversation()
   }, [user._id])
 
+  useEffect(() => {
+    const getMessenger = async () => {
+      const res = await axios.get("/messages/" + currentChat._id)
+    }
+  }, [])
+
   return (
     <>
       <Topbar />
@@ -87,7 +93,9 @@ const Messenger = () => {
                 </div>
               </>
             ) : (
-              <span>Open a conversation to start a chat</span>
+              <span className='noConversation'>
+                Open a conversation to start a chat
+              </span>
             )}
           </div>
         </div>
