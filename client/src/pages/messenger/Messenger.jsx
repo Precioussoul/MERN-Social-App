@@ -9,6 +9,8 @@ import axios from "axios"
 
 const Messenger = () => {
   const [conversations, setConversations] = useState([])
+  const [currentChat, setCurrentChat] = useState(null)
+  const [messages, setMessages] = useState(null)
 
   const {user} = useContext(AuthContext)
   console.log("user", user)
@@ -49,38 +51,44 @@ const Messenger = () => {
         </div>
         <div className='chatBox'>
           <div className='chatBoxWrapper'>
-            <div className='chatBoxTop'>
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-              <Message own={true} />
-              <Message />
-            </div>
-            <div className='chatBoxBottom'>
-              <textarea
-                placeholder='write something...'
-                className='chatMessageInput'
-              />
-              <button className='chatSubmitButton'>Send</button>
-            </div>
+            {currentChat ? (
+              <>
+                <div className='chatBoxTop'>
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                  <Message own={true} />
+                  <Message />
+                </div>
+                <div className='chatBoxBottom'>
+                  <textarea
+                    placeholder='write something...'
+                    className='chatMessageInput'
+                  />
+                  <button className='chatSubmitButton'>Send</button>
+                </div>
+              </>
+            ) : (
+              <span>Open a conversation to start a chat</span>
+            )}
           </div>
         </div>
         <div className='chatOnline'>
