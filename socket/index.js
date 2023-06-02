@@ -11,10 +11,21 @@ const addUser = (userId, socketId) => {
     users.push({userId, socketId})
 }
 
+const removeUser = (socketId) => {
+  users = users.filter((user) => user.socketId !== socketId)
+}
+
 io.on("connection", (socket) => {
   console.log("a user connected")
   //   io.emit("welcome", "hello this is a socket server")
   socket.on("addUser", (userId) => {
     addUser(userId, socket.id)
+    io.emit("getUsers", users)
+  })
+
+  socket.on("disconnect", () => {
+    console.log("a user disconnected")
+    removeUser(socket.id)
+    io.emit("getUsers", users)
   })
 })
