@@ -1,4 +1,10 @@
-import React, {useContext, useEffect, useState} from "react"
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react"
 import Topbar from "../../components/topbar/Topbar"
 import "./messenger.css"
 import Conversation from "../../components/conversation/Conservation"
@@ -11,6 +17,9 @@ const Messenger = () => {
   const [conversations, setConversations] = useState([])
   const [currentChat, setCurrentChat] = useState(null)
   const [messages, setMessages] = useState(null)
+  const [newMessage, setNewMessage] = useState("")
+
+  const scrollRef = useRef()
 
   const {user} = useContext(AuthContext)
   console.log("user", user)
@@ -41,6 +50,31 @@ const Messenger = () => {
 
   console.log("messages", messages)
 
+  const handleSubmit = useCallback(
+    async (e) => {
+      e.preventDefault()
+
+      const message = {
+        sender: user._id,
+        text: newMessage,
+        conversationId: currentChat._id,
+      }
+
+      try {
+        const res = await axios.post("/messages", message)
+        setMessages([...messages, res.data])
+        setNewMessage("")
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    [currentChat, messages, newMessage, user]
+  )
+
+  useEffect(() => {
+    scrollRef.current?.scrollIntoView({behavior: "smooth"})
+  }, [messages])
+
   return (
     <>
       <Topbar />
@@ -53,10 +87,12 @@ const Messenger = () => {
               placeholder='Search for friends...'
             />
             <div className='conversationBox'>
-              {conversations.map((conversation, index) => (
-                <div onClick={() => setCurrentChat(conversation)}>
+              {conversations.map((conversation) => (
+                <div
+                  onClick={() => setCurrentChat(conversation)}
+                  key={conversation._id}
+                >
                   <Conversation
-                    key={index}
                     conversation={conversation}
                     currentUser={user}
                   />
@@ -71,18 +107,24 @@ const Messenger = () => {
               <>
                 <div className='chatBoxTop'>
                   {messages.map((message) => (
-                    <Message
-                      message={message}
-                      own={message.sender === user._id}
-                    />
+                    <div ref={scrollRef} key={message._id}>
+                      <Message
+                        message={message}
+                        own={message.sender === user._id}
+                      />
+                    </div>
                   ))}
                 </div>
                 <div className='chatBoxBottom'>
                   <textarea
                     placeholder='write something...'
                     className='chatMessageInput'
+                    value={newMessage}
+                    onChange={(e) => setNewMessage(e.target.value)}
                   />
-                  <button className='chatSubmitButton'>Send</button>
+                  <button className='chatSubmitButton' onClick={handleSubmit}>
+                    Send
+                  </button>
                 </div>
               </>
             ) : (
